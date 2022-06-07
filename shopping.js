@@ -45,12 +45,24 @@ const getCart = () => {
 
 const addProductToCart = nameParameter2 => {
     const cart = getCart();     // ai jinish ta ai khan a keno likha holo??
-    cart[nameParameter2] = 1;
+    // cart[nameParameter2] = 1;
+    if(cart[nameParameter2]){
+        cart[nameParameter2] = cart[nameParameter2] + 1;
+    }
+    else{
+        cart[nameParameter2] = 1;
+    }
     const cartStringified = JSON.stringify(cart);
     // console.log(cartStringified);
     localStorage.setItem('cart', cartStringified);
     // console.log(cart);
     
 }
+
+    const placeOrder = () => {
+        document.getElementById('products').textContent = '';
+        localStorage.removeItem('cart');
+    }
+
 
 displayLocalStrogeCart();
